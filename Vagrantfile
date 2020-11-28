@@ -31,5 +31,5 @@ Vagrant.configure("2") do |config|
     config.vm.provision "shell", path: "software/install-vs-buildtools.ps1"
     config.vm.provision "shell", path: "configure/post-windowssettings.ps1"
     config.vm.provision :reload
-    config.vm.provision "shell", path: "configure/install-windowsupdates.ps1"
+    # config.vm.provision "shell", path: "configure/install-windowsupdates.ps1"
 end
