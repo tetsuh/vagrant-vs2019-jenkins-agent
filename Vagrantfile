@@ -28,6 +28,10 @@ Vagrant.configure("2") do |config|
     config.vm.provision "shell", path: "configure/set-proxy-settings.ps1"
     config.vm.provision "shell", path: "software/install-scoop.ps1"
     config.vm.provision "shell", path: "software/install-scoop-dev-tools.ps1"
+    config.vm.provision "shell", path: "software/install-jenkins-swarm-client.ps1",
+        env: {"JENKINS_URL" => ENV['JENKINS_URL'],
+              "JENKINS_USER" => ENV['JENKINS_USER'],
+              "JENKINS_TOKEN" => ENV['JENKINS_TOKEN']}
     config.vm.provision "shell", path: "software/install-vs-buildtools.ps1"
     config.vm.provision "shell", path: "configure/post-windowssettings.ps1"
     config.vm.provision :reload
