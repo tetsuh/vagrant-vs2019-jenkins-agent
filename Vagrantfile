@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-    config.vm.box = "baunegaard/win10pro-en"
+    config.vm.box = ENV['VAGRANT_WIN10_BASEBOX'] || "baunegaard/win10pro-en"
     config.vm.hostname = "win10vs2019"
 
     config.winrm.username = "vagrant"
