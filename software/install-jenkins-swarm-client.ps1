@@ -15,8 +15,8 @@ if ((Test-Path env:JENKINS_URL) -and (Test-Path env:JENKINS_USER) -and (Test-Pat
   $jenkins_user = $env:JENKINS_USER
   $jenkins_token = $env:JENKINS_TOKEN
 } else {
-  Write-Error "Must need to set JENKINS_URL, JENKINS_USER and JENKINS_TOKEN"
-  exit 1
+  Write-Warning "Skip the installation of jenkins-swarm-client because required variables are not set.`n(JENKINS_URL, JENKINS_USER and JENKINS_TOKEN)"
+  exit 0
 }
 
 mkdir C:\jenkins\ -Force > $null
