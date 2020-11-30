@@ -20,7 +20,7 @@ if ($archiveHash -ne $archiveActualHash) {
 }
 
 Write-Host "Installing Build Tools for Visual Studio 2019. This may take a while..."
-$exe = Get-ChildItem -Path C:\vagrant\software\vs_buildtools_*.exe -File | Select-Object Name
+$exe = Get-ChildItem -Path C:\vagrant\software\vs_buildtools*.exe -File | Select-Object Name
 Start-Process -FilePath "C:\vagrant\software\$($exe.Name)" -Wait -ArgumentList `
   '--wait','--passive','--norestart', `
   '--addProductLang','en-US', `
