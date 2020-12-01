@@ -1,7 +1,8 @@
 # Install and setup Jenkins swarm client at C:\jenkins
 # https://github.com/jenkinsci/swarm-plugin
 $swarm_client_version = '3.24'
-$swarm_client_name = 'VS2019'
+$swarm_client_name = "VS2019-swarm-latest-${env:VAGRANT_NODE_NUM}"
+Write-Host "Install Jenkins swarm client for node ${env:VAGRANT_NODE_NUM}"
 $swarm_client_home = 'C:\jenkins'
 $swarm_sched_taskname = 'JenkinsSwarmClient'
 if (Test-Path env:JENKINS_AGENT_LABELS) {
@@ -21,6 +22,9 @@ if ((Test-Path env:JENKINS_URL) -and (Test-Path env:JENKINS_USER) -and (Test-Pat
 
 mkdir C:\jenkins\ -Force > $null
 
+# Stop java.exe before downloading swarm-client.jar
+Stop-Process -name 'java' -ErrorAction SilentlyContinue
+
 $swarm_client_download_url = "https://repo.jenkins-ci.org/releases/org/jenkins-ci/plugins/swarm-client/${swarm_client_version}/swarm-client-${swarm_client_version}.jar"
 Write-Output "Downloading ${swarm_client_download_url}"
 Invoke-WebRequest -Uri $swarm_client_download_url -OutFile "${swarm_client_home}\swarm-client-${swarm_client_version}.jar"
@@ -31,6 +35,8 @@ java -jar ${swarm_client_home}\swarm-client-${swarm_client_version}.jar ^
 -username ${jenkins_user} ^
 -password ${jenkins_token} ^
 -disableSslVerification ^
+-disableClientsUniqueId ^
+-deleteExistingClients ^
 -executors 1 ^
 -labels `"${swarm_client_labels}`" ^
 -fsroot ${swarm_client_home}
