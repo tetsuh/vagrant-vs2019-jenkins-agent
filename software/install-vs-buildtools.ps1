@@ -11,7 +11,7 @@
 $archiveUrl = 'https://download.visualstudio.microsoft.com/download/pr/9d2147aa-7b01-4336-b665-8fe07735e5ee/c4b2212532e637ae35783660e79211e0604d0b61e54f6c7db69df30ce446bd73/vs_BuildTools.exe'
 $archiveHash = 'c4b2212532e637ae35783660e79211e0604d0b61e54f6c7db69df30ce446bd73'
 $archiveName = Split-Path $archiveUrl -Leaf
-$archivePath = "C:\vagrant\software\$archiveName"
+$archivePath = "C:\tmp\$archiveName"
 Write-Host 'Downloading the Visual Studio Build Tools Setup Bootstrapper...'
 (New-Object Net.WebClient).DownloadFile($archiveUrl, $archivePath)
 $archiveActualHash = (Get-FileHash $archivePath -Algorithm SHA256).Hash
@@ -20,8 +20,7 @@ if ($archiveHash -ne $archiveActualHash) {
 }
 
 Write-Host "Installing Build Tools for Visual Studio 2019. This may take a while..."
-$exe = Get-ChildItem -Path C:\vagrant\software\vs_buildtools*.exe -File | Select-Object Name
-Start-Process -FilePath "C:\vagrant\software\$($exe.Name)" -Wait -ArgumentList `
+Start-Process -FilePath $archivePath -Wait -ArgumentList `
   '--wait','--passive','--norestart', `
   '--addProductLang','en-US', `
   '--add', 'Microsoft.VisualStudio.Workload.MSBuildTools', `
