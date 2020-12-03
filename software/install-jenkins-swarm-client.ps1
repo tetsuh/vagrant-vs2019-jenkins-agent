@@ -1,7 +1,11 @@
 # Install and setup Jenkins swarm client at C:\jenkins
 # https://github.com/jenkinsci/swarm-plugin
 $swarm_client_version = '3.24'
-$swarm_client_name = "VS2019-swarm-latest-${env:VAGRANT_NODE_NUM}"
+if (Test-Path env:JENKINS_AGENT_NAME) {
+  $swarm_client_name = "${env:JENKINS_AGENT_NAME}"
+} else {
+  $swarm_client_name = "VS2019-swarm-latest-${env:VAGRANT_NODE_NUM}"
+}
 Write-Host "Install Jenkins swarm client for node ${env:VAGRANT_NODE_NUM}"
 $swarm_client_home = 'C:\jenkins'
 $swarm_sched_taskname = 'JenkinsSwarmClient'
