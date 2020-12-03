@@ -9,6 +9,9 @@ Vagrant.configure("2") do |config|
     config.winrm.username = "vagrant"
     config.winrm.password = "vagrant"
 
+    if Vagrant.has_plugin?("vagrant-timezone")
+      config.timezone.value = :host
+    end
     if Vagrant.has_plugin?("vagrant-proxyconf") && ENV['http_proxy']
       puts 'Apply proxy settings to Vagrant (note: no_proxy must include 127.0.0.1)'
       puts "  http_proxy=#{ENV['http_proxy']}"
