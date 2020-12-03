@@ -27,7 +27,6 @@ Vagrant.configure("2") do |config|
         v.customize ["modifyvm", :id, "--cpus", 4]
         v.customize ["modifyvm", :id, "--memory", 8192]
       end
-      machine.vm.post_up_message = "=2= NODE is #{i}"
       machine.vm.provision "shell", path: "configure/pre-windowssettings.ps1"
       machine.vm.provision :reload
       machine.vm.provision "shell", path: "configure/set-proxy-settings.ps1"
