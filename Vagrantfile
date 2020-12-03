@@ -39,6 +39,8 @@ Vagrant.configure("2") do |config|
         env: {"JENKINS_URL" => ENV['JENKINS_URL'],
               "JENKINS_USER" => ENV['JENKINS_USER'],
               "JENKINS_TOKEN" => ENV['JENKINS_TOKEN'],
+              "JENKINS_AGENT_NAME" => ENV['JENKINS_AGENT_NAME'],
+              "JENKINS_AGENT_LABELS" => ENV['JENKINS_AGENT_LABELS'],
               "VAGRANT_NODE_NUM" => "#{i}" }
       machine.vm.provision "shell", path: "software/install-vs-buildtools.ps1"
       machine.vm.provision "shell", path: "configure/post-windowssettings.ps1"
