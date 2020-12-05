@@ -23,10 +23,9 @@ Vagrant.configure("2") do |config|
 
     config.vm.define "win10vs2019-node#{i}" do |machine|
       machine.vm.box = BOX_IMAGE
-      machine.vm.hostname = "win10vs2019-node#{i}"
+      machine.vm.hostname = "win10vs2019"
       machine.vm.provider :virtualbox do |v, override|
         v.gui = false
-        v.name = "win10vs2019-node#{i}"
         v.customize ["modifyvm", :id, "--cpus", 4]
         v.customize ["modifyvm", :id, "--memory", 8192]
       end
