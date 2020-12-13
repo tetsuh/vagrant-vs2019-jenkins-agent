@@ -2,6 +2,7 @@
 # vi: set ft=ruby :
 BOX_IMAGE = ENV['VAGRANT_WIN10_BASE_BOX'] || "baunegaard/win10pro-en"
 NODE_COUNT = (ENV['VAGRANT_WIN10_NUM_NODE'] || 1).to_i
+HOST_TIMEZONE = ENV['VAGRANT_HOST_TIMEZONE'] || 'Etc/GMT+9'
 
 Vagrant.configure("2") do |config|
   (1..NODE_COUNT).each do |i|
@@ -10,7 +11,7 @@ Vagrant.configure("2") do |config|
     config.winrm.password = "vagrant"
 
     if Vagrant.has_plugin?("vagrant-timezone")
-      config.timezone.value = :host
+      config.timezone.value = "#{HOST_TIMEZONE}"
     end
     if Vagrant.has_plugin?("vagrant-proxyconf") && ENV['http_proxy']
       puts 'Apply proxy settings to Vagrant (note: no_proxy must include 127.0.0.1)'
