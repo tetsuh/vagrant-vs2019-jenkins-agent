@@ -27,10 +27,13 @@ Start-Process -FilePath $archivePath -Wait -ArgumentList `
   '--add', 'Microsoft.VisualStudio.Workload.ManagedDesktopBuildTools', `
   '--add', 'Microsoft.Net.ComponentGroup.4.8.DeveloperTools', `
   '--add', 'Microsoft.VisualStudio.Workload.NetCoreBuildTools', `
-  '--add', 'Microsoft.VisualStudio.Workload.VCTools;includeRecommended;includeOptional', `
-  '--remove', 'Microsoft.VisualStudio.Component.Windows10SDK.16299', `
-  '--remove', 'Microsoft.VisualStudio.Component.Windows10SDK.17134', `
-  '--remove', 'Microsoft.VisualStudio.Component.VC.140'
+  '--add', 'Microsoft.VisualStudio.Workload.VCTools;includeRecommended', `
+  '--add', 'Microsoft.Component.VC.Runtime.UCRTSDK', `
+  '--add', 'Microsoft.Net.Component.4.8.SDK', `
+  '--add', 'Microsoft.VisualStudio.Component.VC.ATL', `
+  '--add', 'Microsoft.VisualStudio.Component.VC.ATLMFC', `
+  '--add', 'Microsoft.VisualStudio.Component.VC.CLI.Support', `
+  '--add', 'Microsoft.VisualStudio.Component.Windows10SDK.17763'
 
 # prevent msbuild from running in background, as that will interfere with
 # cleaning the job workspace due to open files/directories.
