@@ -3,6 +3,7 @@
 BOX_IMAGE = ENV['VAGRANT_WIN10_BASE_BOX'] || "baunegaard/win10pro-en"
 NODE_COUNT = (ENV['VAGRANT_WIN10_NUM_NODE'] || 1).to_i
 HOST_TIMEZONE = ENV['VAGRANT_HOST_TIMEZONE'] || 'Etc/GMT+9'
+INSTALL_VS_BUILDTOOLS = ENV['VAGRANT_WIN10_INSTALL_VS_BUILDTOOLS'] || "vs2019"
 
 Vagrant.configure("2") do |config|
   (1..NODE_COUNT).each do |i|
@@ -42,7 +43,12 @@ Vagrant.configure("2") do |config|
               "JENKINS_AGENT_NAME" => ENV['JENKINS_AGENT_NAME'],
               "JENKINS_AGENT_LABELS" => ENV['JENKINS_AGENT_LABELS'],
               "VAGRANT_NODE_NUM" => "#{i}" }
-      machine.vm.provision "shell", path: "software/install-vs-buildtools.ps1"
+      if INSTALL_VS_BUILDTOOLS.downcase.include? "vs2017"
+        machine.vm.provision "shell", path: "software/install-vs2017-buildtools.ps1"
+      end
+      if INSTALL_VS_BUILDTOOLS.downcase.include? "vs2019"
+        machine.vm.provision "shell", path: "software/install-vs-buildtools.ps1"
+      end
       machine.vm.provision "shell", path: "configure/post-windowssettings.ps1"
       machine.vm.provision :reload
       # machine.vm.provision "shell", path: "configure/install-windowsupdates.ps1"
