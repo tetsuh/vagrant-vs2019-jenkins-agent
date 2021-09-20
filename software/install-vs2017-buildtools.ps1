@@ -8,6 +8,10 @@
 # see https://docs.microsoft.com/en-us/visualstudio/install/command-line-parameter-examples?view=vs-2017
 # see https://docs.microsoft.com/en-us/visualstudio/install/workload-and-component-ids?view=vs-2017
 # see https://docs.microsoft.com/en-us/visualstudio/install/workload-component-id-vs-build-tools?view=vs-2017
+# To get the download URL, peek at the download link directly in the browser developer tools
+# https://docs.microsoft.com/ja-jp/visualstudio/install/create-an-offline-installation-of-visual-studio?view=vs-2017
+# https://docs.microsoft.com/en-us/visualstudio/install/build-tools-container?view=vs-2017
+# https://aka.ms/vs/15/release/vs_buildtools.exe
 $archiveUrl = 'https://download.visualstudio.microsoft.com/download/pr/b8d403d9-01a4-45a0-9229-db5572fd5e4e/997600ae09705dfc6d069d8ad2cfad1962d8ff6fedd6c9fe5abee36c7c919f34/vs_BuildTools.exe'
 $archiveHash = '997600ae09705dfc6d069d8ad2cfad1962d8ff6fedd6c9fe5abee36c7c919f34'
 
