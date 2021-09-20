@@ -30,6 +30,7 @@ Start-Process -FilePath $archivePath -Wait -ArgumentList `
   '--addProductLang','en-US', `
   '--add', 'Microsoft.VisualStudio.Workload.MSBuildTools', `
   '--add', 'Microsoft.VisualStudio.Workload.ManagedDesktopBuildTools', `
+  '--add', 'Microsoft.Net.ComponentGroup.4.6.2.DeveloperTools', `
   '--add', 'Microsoft.Net.Component.4.TargetingPack', `
   '--add', 'Microsoft.VisualStudio.Workload.NetCoreBuildTools', `
   '--add', 'Microsoft.VisualStudio.Workload.VCTools;includeRecommended',
