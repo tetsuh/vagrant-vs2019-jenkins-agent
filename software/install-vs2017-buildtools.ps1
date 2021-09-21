@@ -37,8 +37,7 @@ Start-Process -FilePath $archivePath -Wait -ArgumentList `
   '--add', 'Microsoft.Component.VC.Runtime.UCRTSDK',
   '--add', 'Microsoft.VisualStudio.Component.VC.ATL',
   '--add', 'Microsoft.VisualStudio.Component.VC.ATLMFC',
-  '--add', 'Microsoft.VisualStudio.Component.VC.CLI.Support',
-  '--remove', 'Microsoft.VisualStudio.Workload.NetCoreBuildTools'
+  '--add', 'Microsoft.VisualStudio.Component.VC.CLI.Support'
 
 # prevent msbuild from running in background, as that will interfere with
 # cleaning the job workspace due to open files/directories.
