@@ -8,4 +8,4 @@ scoop install nssm
 scoop bucket add extras
 scoop install sysinternals
 scoop bucket add java
-scoop install adoptopenjdk-lts-hotspot-jre
+scoop install semeru-lts-jre
