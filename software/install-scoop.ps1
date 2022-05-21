@@ -6,7 +6,7 @@
 if (Test-Path "${HOME}\scoop\shims\scoop.ps1") {
   scoop update
 } else {
-  Invoke-Expression (new-object net.webclient).downloadstring('https://get.scoop.sh')
+  Invoke-Expression "& {$(Invoke-RestMethod get.scoop.sh)} -RunAsAdmin"
 }
 
 # scoop config proxy need to remove http://
