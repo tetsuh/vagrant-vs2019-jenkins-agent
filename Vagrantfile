@@ -49,6 +49,9 @@ Vagrant.configure("2") do |config|
       if INSTALL_VS_BUILDTOOLS.downcase.include? "vs2019"
         machine.vm.provision "shell", path: "software/install-vs-buildtools.ps1"
       end
+      if INSTALL_VS_BUILDTOOLS.downcase.include? "vs2022"
+        machine.vm.provision "shell", path: "software/install-vs2022-buildtools.ps1"
+      end
       machine.vm.provision "shell", path: "configure/post-windowssettings.ps1"
       machine.vm.provision :reload
       # machine.vm.provision "shell", path: "configure/install-windowsupdates.ps1"
